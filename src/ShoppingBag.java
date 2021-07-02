@@ -1,4 +1,6 @@
+//When emptying a bag, we start with the item on top then the next until the bag is empty. "IMPLEMENT LIFO"
 public class ShoppingBag implements ICollection{
+    int numberOfItems = 0;
 
     public ShoppingBag(){
     }
@@ -14,6 +16,8 @@ public class ShoppingBag implements ICollection{
 
     @Override
     public boolean add(Object newItem) {
+        this.numberOfItems++;
+
         return false;
     }
 
