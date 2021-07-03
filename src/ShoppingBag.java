@@ -6,7 +6,7 @@ public class ShoppingBag implements ICollection{
     public ShoppingBag(){
     }
 
-    public ShoppingBag(int bagSize) throws Exception{
+    public ShoppingBag(int bagSize) throws IllegalArgumentException{
         if (bagSize <= 0) {
             IllegalArgumentException e = new IllegalArgumentException("Invalid shopping bag size: " + String.valueOf(bagSize));
             throw e;

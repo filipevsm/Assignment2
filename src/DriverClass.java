@@ -1,7 +1,24 @@
 public class DriverClass {
     public static void main(String[] args) throws Exception {
-        //ShoppingBag shoppingBag0 = new ShoppingBag(-5); //Test Exception
+        //Test Exception
+        try {
+            ShoppingBag shoppingBag0 = new ShoppingBag(-5); //Test Exception
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+        //Test Exception
+        try {
+            ClientService clientService0 = new ClientService(0);
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("--------------------------------------");
+
         ShoppingBag shoppingBag1 = new ShoppingBag(4);
+        System.out.println("Shopping bag size is 4");
         System.out.println("Apple added? " + shoppingBag1.add("Apple"));
         System.out.println("Banana added? " + shoppingBag1.add("Banana"));
         System.out.println("Peach added? " + shoppingBag1.add("Peach"));
@@ -9,8 +26,10 @@ public class DriverClass {
         System.out.println("Rice added? " + shoppingBag1.add("Rice"));
         System.out.println("Removing the following top item from the shopping bag: " + shoppingBag1.getNext());
         System.out.println("Removing the following top item from the shopping bag: " + shoppingBag1.getNext());
-        //ClientService clientService0 = new ClientService(0);//Test Exception
+        System.out.println("--------------------------------------");
+
         ClientService clientService1 = new ClientService(3);
+        System.out.println("Client queue max is 3");
         System.out.println("Queued client? " + clientService1.add("Client 1"));
         System.out.println("Queued client? " + clientService1.add("Client 2"));
         System.out.println("Queued client? " + clientService1.add("Client 3"));
@@ -19,6 +38,8 @@ public class DriverClass {
         System.out.println("Done with client: " + clientService1.getNext());
         System.out.println("Done with client: " + clientService1.getNext());
         System.out.println("Done with client: " + clientService1.getNext());
+        System.out.println("--------------------------------------");
+
         Student student1 = new Student("Student 1",3.8);
         Student student2 = new Student("Student 2",3.5);
         Student student3 = new Student("Student 3",4);

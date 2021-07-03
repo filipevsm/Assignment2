@@ -5,7 +5,7 @@ public class ClientService implements ICollection {
     public ClientService(){
     }
 
-    public ClientService(int maxClients) throws Exception{
+    public ClientService(int maxClients) throws IllegalArgumentException{
         if (maxClients <= 0) {
             IllegalArgumentException e = new IllegalArgumentException("Invalid client queue size: " + String.valueOf(maxClients));
             throw e;
