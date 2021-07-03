@@ -1,8 +1,8 @@
 public class DriverClass {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         //Test Exception
         try {
-            ShoppingBag shoppingBag0 = new ShoppingBag(-5); //Test Exception
+            ShoppingBag shoppingBag0 = new ShoppingBag(-5);
         }
         catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -55,6 +55,5 @@ public class DriverClass {
         System.out.println("Highest GPA on the list " + deansList1.getNext());
         System.out.println("Highest GPA on the list " + deansList1.getNext());
         System.out.println("Highest GPA on the list " + deansList1.getNext());
-
     }
 }
