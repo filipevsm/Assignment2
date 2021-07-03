@@ -7,7 +7,8 @@ public class ClientService implements ICollection {
 
     public ClientService(int maxClients) throws Exception{
         if (maxClients <= 0) {
-            IllegalArgumentException e = new IllegalArgumentException(String.valueOf(maxClients));
+            IllegalArgumentException e = new IllegalArgumentException("Invalid client queue size: " + String.valueOf(maxClients));
+            throw e;
         }
         else {
             this.clientsList = new String[maxClients];
@@ -33,12 +34,26 @@ public class ClientService implements ICollection {
     public String getNext() {
         String currentClient = this.clientsList[0];
 
-        int counter = 0;
-        while (counter <= this.clientsList.length) {
-            this.clientsList[counter] = this.clientsList[counter+1];
-            counter++;
+        if (this.clientsList[0] == null) {
+            return "No clients on queue.";
         }
-
-        return currentClient;
+        else if (this.clientsList[1] == null) {
+            this.clientsList[0] = null;
+            return currentClient;
+        }
+        else {
+            int counter = 0;
+            while (counter < this.clientsList.length) {
+                if ((counter + 1) == this.clientsList.length) {
+                    this.clientsList[counter] = null;
+                    return currentClient;
+                }
+                else {
+                    this.clientsList[counter] = this.clientsList[counter + 1];
+                }
+                counter++;
+            }
+        }
+        return "false";
     }
 }

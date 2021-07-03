@@ -1,26 +1,42 @@
+import java.util.ArrayList;
+
 public class DeansList implements ICollection {
-    private Student[] studentList;
+    private ArrayList<Student> studentList;
 
     public DeansList() {
-
-    }
-
-    public DeansList(int classSize) throws Exception {
-        if (classSize <= 0) {
-            IllegalArgumentException e = new IllegalArgumentException(String.valueOf(classSize));
-        }
-        else {
-            this.studentList = new Student[classSize];
-        }
+        this.studentList = new ArrayList<Student>();
     }
 
     @Override
     public boolean add(Object newItem) {
-        return false;
+        Student newStudent = (Student) newItem;
+        if (newStudent.getGpa() >= 3.7) {
+            this.studentList.add(newStudent);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     @Override
     public String getNext() {
-        return null;
+        Student newStudent = new Student(null,0);
+        int counter = 0;
+        while (counter < this.studentList.size()) {
+            if (this.studentList.get(counter).getGpa() > newStudent.getGpa()) {
+                newStudent = this.studentList.get(counter);
+            }
+            counter++;
+        }
+        counter = 0;
+        while (counter < this.studentList.size()) {
+            if (this.studentList.get(counter).equals(newStudent)) {
+                this.studentList.remove(counter);
+                return newStudent.toString();
+            }
+            counter++;
+        }
+        return "false";
     }
 }

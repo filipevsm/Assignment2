@@ -8,7 +8,8 @@ public class ShoppingBag implements ICollection{
 
     public ShoppingBag(int bagSize) throws Exception{
         if (bagSize <= 0) {
-            IllegalArgumentException e = new IllegalArgumentException(String.valueOf(bagSize));
+            IllegalArgumentException e = new IllegalArgumentException("Invalid shopping bag size: " + String.valueOf(bagSize));
+            throw e;
         }
         else {
             this.shoppingList = new String[bagSize];
@@ -18,14 +19,15 @@ public class ShoppingBag implements ICollection{
     @Override
     public boolean add(Object newItem) {
         int counter = 0;
-        while (counter <= this.shoppingList.length) {
-            if (this.shoppingList[this.shoppingList.length - 1] == null) {
-                this.shoppingList[this.shoppingList.length - 1] = (String) newItem;
+        while (counter < this.shoppingList.length) {
+            if (this.shoppingList[counter] == null) {
+                this.shoppingList[counter] = (String) newItem;
                 this.numberOfItems++;
                 return true;
             }
-            else if (this.shoppingList[0] != null)
+            else if (this.shoppingList[this.shoppingList.length - 1] != null) {
                 return false;
+            }
             counter++;
         }
         return false;
@@ -34,7 +36,7 @@ public class ShoppingBag implements ICollection{
     @Override
     public String getNext() {
         int counter = 0;
-        while (counter <= shoppingList.length) {
+        while (counter < shoppingList.length) {
             if (this.shoppingList[this.shoppingList.length - 1 - counter] != null) {
                 String lastAddedItem = this.shoppingList[this.shoppingList.length - 1 - counter];
                 this.shoppingList[this.shoppingList.length - 1 - counter] = null;
@@ -43,6 +45,6 @@ public class ShoppingBag implements ICollection{
             }
             counter++;
         }
-        return null;
+        return "Could not remove item.";
     }
 }
