@@ -1,3 +1,9 @@
+/**
+ * This class implements the Student object that is instantiated inside of DeansList. The Student object has a name and
+ * a GPA.
+ *
+ * @author meghrigJAC
+ */
 public class Student {
     private String name;
     private double gpa;

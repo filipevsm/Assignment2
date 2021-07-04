@@ -1,3 +1,10 @@
+/**
+ * DriverClass tests all the classes and methods of this program. It includes calls to ClientService, DeansList,
+ * ShoppingBag and Student class and methods. It also includes two exception tests for ShoppingBag and ClientService.
+ *
+ * @author Filipe Moreira
+ * @version 1.0
+ */
 public class DriverClass {
     public static void main(String[] args) {
         //Test Exception
